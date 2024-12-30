@@ -37,7 +37,7 @@ func TestRunGETPrices(t *testing.T) {
 }
 
 func assertStatus(t *testing.T, got reflect.Type, want reflect.Type) {
-	if want != got {
+	if got != want {
 		t.Errorf("got %s expected %s", got, want)
 	}
 }
