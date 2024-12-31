@@ -51,16 +51,18 @@ type ExchangeInformationJSONResponse struct {
 type TradeQuoteJSONResponse struct {
 	Status int    `json:"status"`
 	Error  string `json:"error"`
-	Data   struct {
-		QuoteID        string `json:"quoteId"`
-		SourceCurrency string `json:"sourceCurrency"`
-		TargetCurrency string `json:"targetCurrency"`
-		SourceAmount   string `json:"sourceAmount"`
-		TargetAmount   string `json:"targetAmount"`
-		Price          string `json:"price"`
-		Expiry         string `json:"expiry"`
-	} `json:"data"`
+	Data   TradeQuoteDataStruct `json:"data"`
 }
+
+type TradeQuoteDataStruct struct {
+	QuoteID        string `json:"quoteId"`
+	SourceCurrency string `json:"sourceCurrency"`
+	TargetCurrency string `json:"targetCurrency"`
+	SourceAmount   string `json:"sourceAmount"`
+	TargetAmount   string `json:"targetAmount"`
+	Price          string `json:"price"`
+	Expiry         string `json:"expiry"`
+} 
 
 // Gets the latest price and returns raw JSON output.
 func GETPrices(currency string, printJSON bool) []byte {
