@@ -1,4 +1,4 @@
-package shell
+package main
 
 import (
 	"testing"
@@ -34,6 +34,10 @@ func TestRunGETPrices(t *testing.T) {
 			t.Errorf("Seems like both values got the same value of %s.", got)
 		}
 	})
+}
+
+func TestRunPOSTTrade(t *testing.T) {
+
 }
 
 func assertStatus(t *testing.T, got reflect.Type, want reflect.Type) {
