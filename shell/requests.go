@@ -78,8 +78,8 @@ func GETPrices(currency string, printJSON bool) []byte {
 	return cmdOutput
 }
 
-func POSTTradeQuote(currency string, printJSON bool) []byte {
-	cmd := exec.Command("./fetch_quote.sh", currency)
+func POSTTradeQuote(targetCurrency string, sourceCurrency string, printJSON bool) []byte {
+	cmd := exec.Command("./fetch_quote.sh", targetCurrency, sourceCurrency)
 	cmdOutput, _ := cmd.Output()
 
 	if printJSON {
