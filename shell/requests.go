@@ -92,7 +92,7 @@ func POSTTradeQuote(currency string, printJSON bool) []byte {
 }
 
 func GETExchangeInformation(currency string, printJSON bool) []byte {
-	cmd := exec.Command("./check_prices.sh")
+	cmd := exec.Command("./check_prices.sh", currency)
 	cmdOutput, _ := cmd.Output()
 	jsonOutput, _ := json.MarshalIndent(string(cmdOutput), "", "\t")
 
