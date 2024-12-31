@@ -36,8 +36,14 @@ func TestRunGETPrices(t *testing.T) {
 	})
 }
 
-func TestRunPOSTTrade(t *testing.T) {
+func TestRunPOSTTradeQuote(t *testing.T) {
+	t.Run("trade request should return JSON", func(t *testing.T) {
+		response := POSTTradeQuote("BTC", false)
+		got := reflect.TypeOf(response)
+		want := reflect.TypeOf([]byte(string(`"status": 0`)))
 
+		assertStatus(t, got, want)
+	})
 }
 
 func assertStatus(t *testing.T, got reflect.Type, want reflect.Type) {
