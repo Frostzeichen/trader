@@ -38,7 +38,7 @@ func TestRunGETPrices(t *testing.T) {
 
 func TestRunPOSTTradeQuote(t *testing.T) {
 	t.Run("trade request should return JSON", func(t *testing.T) {
-		response := POSTTradeQuote("BTC", false)
+		response := POSTTradeQuote("BTC", "PHP", false)
 		got := reflect.TypeOf(response)
 		want := reflect.TypeOf([]byte(string(`"status": 0`)))
 
@@ -49,8 +49,8 @@ func TestRunPOSTTradeQuote(t *testing.T) {
 		var f TradeQuoteJSONResponse 
 		var g TradeQuoteJSONResponse 
 
-		response1 := POSTTradeQuote("BTC", false)
-		response2 := POSTTradeQuote("USDC", false)
+		response1 := POSTTradeQuote("BTC", "PHP", false)
+		response2 := POSTTradeQuote("USDC", "PHP", false)
 
 		json.Unmarshal([]byte(string(response1)), &f)
 		json.Unmarshal([]byte(string(response2)), &g)
