@@ -9,6 +9,7 @@ import (
 type PricesJSONResponse struct {
 	Mins  int `json:"mins"`
 	Price string `json:"price"`
+	Currency string `json:"currency"`
 }
 
 type ExchangeInformationJSONResponse struct {
@@ -69,11 +70,15 @@ func GETPrices(currency string, printJSON bool) []byte {
 	cmd := exec.Command("./check_prices.sh", currency)
 	cmdOutput, _ := cmd.Output()
 
+	var f PricesJSONResponse
+	json.Unmarshal([]byte(string(cmdOutput)), &f)
+	f.Currency = currency
+
 	if printJSON {
-		var f PricesJSONResponse
-		json.Unmarshal([]byte(string(cmdOutput)), &f)
 		fmt.Println(f)
 	}
+
+	cmdOutput, _ = json.Marshal(f)
 
 	return cmdOutput
 }
