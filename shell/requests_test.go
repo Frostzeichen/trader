@@ -1,9 +1,9 @@
 package main
 
 import (
-	"testing"
-	"reflect"
 	"encoding/json"
+	"reflect"
+	"testing"
 )
 
 func TestRunGETPrices(t *testing.T) {
@@ -46,8 +46,8 @@ func TestRunPOSTTradeQuote(t *testing.T) {
 	})
 
 	t.Run("response should not be hardcoded", func(t *testing.T) {
-		var f TradeQuoteJSONResponse 
-		var g TradeQuoteJSONResponse 
+		var f TradeQuoteJSONResponse
+		var g TradeQuoteJSONResponse
 
 		response1 := POSTTradeQuote("BTC", "PHP", false)
 		response2 := POSTTradeQuote("USDC", "PHP", false)
