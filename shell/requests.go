@@ -90,6 +90,11 @@ func POSTTradeQuote(targetCurrency string, sourceCurrency string, printJSON bool
 		var f TradeQuoteJSONResponse
 		json.Unmarshal([]byte(string(cmdOutput)), &f)
 		fmt.Println(f)
+
+		// Normally, f == {0 {    }} if there is an IP-related error. Hence f.Status will not be 200.
+		if f.Status != 200 {
+			fmt.Println("There could be an IP-related error. Please check. File name is fetch_quote.sh.")
+		}
 	}
 
 	return cmdOutput
