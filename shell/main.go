@@ -65,6 +65,7 @@ func executeTrade(coins []string) {
 	formattedDate := currentDate.Format("2006-01-02")
 
 	filename := fmt.Sprintf("%s.csv", formattedDate)
+	fmt.Println(filename)
 
 	fi, err := os.OpenFile("dataset/" + filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -76,7 +77,9 @@ func executeTrade(coins []string) {
 		panic(err)
 	}
 	
-	time.Sleep(30 * time.Minute)
+	interval := 1
+	fmt.Printf("Waiting for %d minute.\n", interval)
+	time.Sleep(1 * time.Minute)
 	}
 }
 
