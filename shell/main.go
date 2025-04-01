@@ -65,7 +65,7 @@ func executeTrade(coins []string) {
 	formattedDate := currentDate.Format("2006-01-02")
 
 	filename := fmt.Sprintf("%s.csv", formattedDate)
-	fmt.Println(filename)
+	fmt.Printf("Writing to %s.\n", filename)
 
 	fi, err := os.OpenFile("dataset/" + filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -84,6 +84,6 @@ func executeTrade(coins []string) {
 }
 
 func main() {
-	coins := []string{"BTC", "USDC", "XRP", "DOGE", "ETH", "CBX"}
+	coins := []string{"BTC", "USDC", "XRP", "DOGE", "ETH", "PEPE"}
 	executeTrade(coins);
 }
